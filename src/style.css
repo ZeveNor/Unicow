@@ -1,0 +1,43 @@
+body {
+  background-color: #fbfbfb;
+}
+
+.navbar{
+  background-color: #ffffff !important;
+  box-shadow: 0 10px 14px rgba(171, 175, 171, 0.494);
+  padding: 0.7em 1em 0.7em 10em;
+}
+
+.user-area{
+  border-left: solid 2px rgb(136, 133, 133);
+  border-right: solid 2px rgb(136, 133, 133);
+  border-radius: 100px;
+  padding: 1.8px;
+}
+
+.profile-frame{
+  border: solid 1px rgb(190, 190, 190);
+  border-radius: 100px;
+  width: 2.3em;
+  height: 2.3em;
+}
+
+.profile-frame img{
+  width: 100%;
+  color: rgb(190, 190, 190);
+  border-radius: 100px;
+  height: 100%;
+}
+
+.setting-area{
+  display: flex;
+}
+
+.setting-area box-icon{
+  color: #ffffff !important;
+  background-color: antiquewhite;
+}
+
+.collapse{
+  gap: 15px;
+}
