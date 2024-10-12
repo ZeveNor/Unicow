@@ -2,30 +2,91 @@ body {
   background-color: #fbfbfb;
 }
 
-.navbar{
-  background-color: #ffffff !important;
-  box-shadow: 0 10px 14px rgba(171, 175, 171, 0.494);
-  padding: 0.7em 1em 0.7em 10em;
+p{
+  margin: 0;
+  padding: 0;
 }
 
-.user-area{
+h6{
+  margin: 0;
+}
+
+:root{
+  --bs-green: #bff5db;
+}
+
+
+.navbar {
+  background-color: #ffffff !important;
+  box-shadow: 0 10px 14px rgba(171, 175, 171, 0.494);
+  padding: 0.7em 1em; 
+}
+
+@media (min-width: 992px) {
+  .navbar {
+    padding: 0.7em 1em 0.7em 10em; 
+  }
+}
+
+.user-area {
   border-left: solid 2px rgb(136, 133, 133);
   border-right: solid 2px rgb(136, 133, 133);
   border-radius: 100px;
   padding: 1.8px;
 }
 
-.profile-frame{
+.profile-frame {
   border: solid 1px rgb(190, 190, 190);
   border-radius: 100px;
   width: 2.3em;
   height: 2.3em;
 }
 
-.profile-frame img{
+.profile-frame img {
   width: 100%;
   color: rgb(190, 190, 190);
   border-radius: 100px;
+  height: 100%;
+}
+
+.profile-frame:hover , .user-area:hover {
+  animation: heartbeat 1.5s;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+.navbar-brand{
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  align-items: center;
+}
+
+.navbar-brand p {
+  text-shadow: 0 2px 3px rgb(56, 56, 56);
+  font-size: 25px;
+}
+
+.navbar-brand p span{
+  font-size: 10px;
+  text-shadow: 0 1px 2px rgba(56, 56, 56, 0.597);
+  color: rgb(70, 70, 70);
+}
+
+.nav-frame{
+  width: 2.3em;
+  height: 2.3em;
+}
+
+.nav-frame img {
+  width: 100%;
   height: 100%;
 }
 
@@ -35,9 +96,48 @@ body {
 
 .setting-area box-icon{
   color: #ffffff !important;
-  background-color: antiquewhite;
+  transition: transform 0.5s ease-in-out;
+}
+
+.setting-area box-icon:hover{
+  transform: rotate(360deg);
 }
 
 .collapse{
   gap: 15px;
+}
+
+.navbar .container-fluid button{
+  background-color: #ffffff;
+  border-color: #00e676;
+  color: #00e676;
+  background-color: var(--bs-green)
+}
+
+.welcome{
+  width: 112%;
+  height: 70px;
+  margin: -15px;
+}
+.welcome p{
+  background: url('./img/midnight.jpeg');
+  width: 100%;
+  height: 100%;
+  background-size: 100%;
+  background-position: 25% 73%;
+  justify-content: flex-end;
+  padding-right: 10px;
+  display: flex;
+  align-items: flex-end;
+  color: white;
+  font-size: 11px;
+}
+
+.de-flex{
+  display: flex;
+  align-items: center;
+}
+
+.de-flex h6{
+  font-size: 12px;
 }
