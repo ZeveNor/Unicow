@@ -39,7 +39,7 @@ jobs:
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           status: ${{ job.status }}
-          description: "Build and deploy to GitHub Pages"
+          description: "Build and deploy to GitHub Pages Success!"
           color: 0x00FF00
           url: "https://zevenor.github.io/Unicow/"
           title: "[FrontEND] Launch Unicow on server."
