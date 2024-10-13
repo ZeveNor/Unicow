@@ -40,44 +40,36 @@
         </div>
     </nav>
 
-    <div style="height: 90vh; position: sticky;" class=" d-flex flex-row flex-shrink-0">
+    <div style="height: 90vh; position: sticky; " class=" d-flex flex-row flex-shrink-0">
         <div class="d-flex flex-column flex-shrink-0 bg-body-tertiary sidebar-h" id="sidebar"
-            style="flex-grow: 0; position: sticky; box-shadow: 0 5px 7px rgba(171, 175, 171, 0.494);">
+            style="flex-grow: 0; overflow-y: hidden; position: sticky; box-shadow: 0 5px 7px rgba(171, 175, 171, 0.494);">
             <div class="welcome d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
                 <p>SAT 12-10-2024 06:53</p>
             </div>
             <hr style="margin: 5px 5px;">
-            <ul class="nav nav-pills flex-column mb-auto" style="padding:15px 10px;">
-                <li class="nav-item">
-                    <a href="#" class="nav-link active" aria-current="page">
-                        <svg class="bi pe-none me-2" width="16" height="16">
-                            <use xlink:href="#home" />
-                        </svg>
-                        Dashboard
+            <ul class="nav nav-pills flex-column mb-auto" style="font-weight: 500; padding:15px 10px;">
+                <li class="nav-item m-1">
+                    <a href="#" class="nav-link active d-flex gap-3" aria-current="page">
+                        <box-icon name='dashboard' width="16" type='solid' color='#ffffff'></box-icon>
+                        <p>Dashboard</p> 
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link link-body-emphasis">
-                        <svg class="bi pe-none me-2" width="16" height="16">
-                            <use xlink:href="#speedometer2" />
-                        </svg>
-                        Students
+                    <a href="./pages/student.html" class="nav-link d-flex gap-3" aria-current="page">
+                        <box-icon name='user-rectangle' width="16" type='solid' color='#676a6a'></box-icon>
+                        <p style="color: #676a6a;">Students</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link link-body-emphasis">
-                        <svg class="bi pe-none me-2" width="16" height="16">
-                            <use xlink:href="#table" />
-                        </svg>
-                        Attendances
+                    <a href="#" class="nav-link d-flex gap-3" aria-current="page">
+                        <box-icon name='check-square' width="16" type='solid' color='#676a6a'></box-icon>
+                        <p style="color: #676a6a;">Attendances</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link link-body-emphasis">
-                        <svg class="bi pe-none me-2" width="16" height="16">
-                            <use xlink:href="#grid" />
-                        </svg>
-                        Classrooms
+                    <a href="#" class="nav-link d-flex gap-3" aria-current="page">
+                        <box-icon name='grid-alt' width="16" type='solid' color='#676a6a'></box-icon>
+                        <p style="color: #676a6a;">Classrooms</p>
                     </a>
                 </li>
                 <hr>
@@ -94,19 +86,19 @@
     
         <div class="flex-grow-1 p-3">
             <div class="menu-1">
-                <div class="count-box d-flex flex-row c-1 flex-grow-1 flex-wrap">
+                <a href="#" class="count-box d-flex flex-row c-1 flex-grow-1 flex-wrap nav-link">
                     <box-icon name='dashboard' type='solid' color='#ffffff'></box-icon>
-                    <p class="truncate-text">Dashboard</p>
-                </div>
-                <div class="count-box p-4 d-flex c">
-                    <box-icon name='dashboard' type='solid' color='#676a6a'></box-icon>
-                </div>
-                <div class="count-box p-4 d-flex c">
-                    <box-icon name='dashboard' type='solid' color='#676a6a'></box-icon>
-                </div>
-                <div class="count-box p-4 d-flex c">
-                    <box-icon name='dashboard' type='solid' color='#676a6a'></box-icon>
-                </div>
+                    <p class="truncate-text" style="font-weight: 500;">Dashboard</p>
+                </a>
+                <a href="./pages/student.html" class="count-box p-4 d-flex c nav-link">
+                    <box-icon name='user-rectangle' type='solid' color='#676a6a'></box-icon>
+                </a>
+                <a href="#" class="count-box p-4 d-flex c nav-link">
+                    <box-icon name='check-square' type='solid' color='#676a6a'></box-icon>
+                </a>
+                <a href="#" class="count-box p-4 d-flex c nav-link">
+                    <box-icon name='grid-alt' type='solid' color='#676a6a'></box-icon>
+                </a>
             </div>
             <div class="row g-md-3 mt-1">
                 <div class="col-sm-6 col-md-3" >
