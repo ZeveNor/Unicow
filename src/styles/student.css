@@ -15,11 +15,11 @@
 
 .table-content th {
   position: sticky;
-  top: 0; /* Stick the header to the top */
-  background-color: #fff; /* Set a background color to prevent it from blending with the rows */
-  z-index: 2; /* Make sure the header is on top */
-  border-bottom: 2px solid #dee2e6; /* Optional: enhance the header look */
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow for better visibility */
+  top: 0; 
+  background-color: #fff; 
+  z-index: 2; 
+  border-bottom: 2px solid #dee2e6; 
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); 
 }
 
 .table-responsive {
@@ -65,4 +65,38 @@
 .page-link {
   padding: 5px 15px;
   font-weight: 500;
+}
+
+.transparent-table {
+  background-color: transparent; 
+  width: 100%; 
+}
+
+.transparent-table th, .transparent-table td {
+  padding: 4px;
+  vertical-align: top; 
+}
+
+.transparent-table th {
+  text-align: left;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.transparent-table td {
+  padding-left: 10px;
+  font-weight: 400;
+}
+
+.transparent-table th:nth-child(2) {
+  text-align: left;
+}
+
+.transparent-table tr th:nth-child(3),
+.transparent-table tr td:nth-child(4) {
+  padding-left: 20px; 
+}
+
+tr,th{
+  border: solid;
 }
