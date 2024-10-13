@@ -1,5 +1,7 @@
 body {
   background-color: #fbfbfb;
+  margin: 0;
+  padding: 0;
 }
 
 p{
@@ -19,7 +21,7 @@ h6{
 .navbar {
   background-color: #ffffff !important;
   box-shadow: 0 10px 14px rgba(171, 175, 171, 0.494);
-  padding: 0.7em 1em; 
+
 }
 
 @media (min-width: 992px) {
@@ -117,7 +119,6 @@ h6{
 .welcome{
   width: 260px;
   height: 90px;
-  /* margin: -15px; */
 }
 .welcome p{
   background: url('./img/midnight.jpeg');
@@ -146,18 +147,34 @@ h6{
 .count-box{
   background-color: white;
   box-shadow: 3px 1px 10px rgba(198, 200, 198, 0.761);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .count-box .flex-lg-row{
   justify-content: space-between;
 }
 
+p{
+  margin: 0; 
+}
+
 .count-box h5{
-  font-weight: 700;
+  align-items: flex-start;
   color: #676a6a;
+  font-weight: 500;
+  height: 100%;
+}
+
+@media (max-width: 1024px) {
+  .count-box h5 {
+    font-size: medium;
+  }
 }
 
 .count-box span{
+  align-items: flex-end;
   font-weight: 500;
   font-size: 30px;
   color: #6db32c;
@@ -168,15 +185,85 @@ h6{
   align-items: center;
 }
 
+.graph{
+  box-shadow: 6px 8px 20px rgba(152, 150, 150, 0.406);
+  border: solid 1px rgba(112, 112, 112, 0.472);
+}
+
 .count-box span .icon box-icon{
   line-height: 5;
 }
 
-#bubbleCanvas {
-  position: absolute;
-  top: 0;
-  left: 0;
+.container-graph{
+  display: flex;
+  gap: 1em;
+  flex-direction: row;
+}
+
+@media (max-width: 920px) { 
+  .container-graph{
+    flex-direction: column;
+  }
+}
+
+.sidebar-h{
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .sidebar-h{
+    display: none !important;
+  }
+}
+
+.menu{
+  display: flex;
   width: 100%;
-  z-index: -1;
-  height: 99vh;
+}
+
+.menu-1 {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.c-1 {
+    background: url('./img/midnight.jpeg');
+    background-size: 100%;
+    background-position: 0 80%;
+    padding: 1.5em 1em;
+    gap: 5px;
+    overflow: hidden;
+}
+
+.truncate-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100px;
+}
+
+@media (min-width: 1023px) {
+    .menu-1{
+      display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .truncate-text {
+        max-width: 80px;
+    }
+}
+
+@media (max-width: 390px) {
+    .truncate-text {
+        max-width: 60px;
+    }
+}
+
+@media (max-width: 370px) {
+    .truncate-text {
+        display:none;
+    }
 }
