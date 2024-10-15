@@ -208,7 +208,7 @@ h6{
   display: block;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1320px) {
   .sidebar-h{
     display: none !important;
   }
@@ -242,7 +242,7 @@ h6{
     max-width: 100px;
 }
 
-@media (min-width: 1023px) {
+@media (min-width: 1320px) {
     .menu-1{
       display: none;
     }

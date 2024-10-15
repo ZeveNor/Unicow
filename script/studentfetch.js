@@ -1,116 +1,196 @@
-document.addEventListener('DOMContentLoaded', async function () {
-  const studentsPerPage = 10; 
-  let currentPage = 1;
-  let totalPages = 0; 
-  let students = [];
-
-  try {
-    const response = await fetch('http://localhost:4200/api/students');
-    if (!response.ok) throw new Error('Network response was not ok');
-    const data = await response.json();
-    if (data.status === '200') {
-      students = data.result;
-      students += data.result;
-      totalPages = Math.ceil(students.length / studentsPerPage);
-      displayPage(currentPage);
-      setupPagination();
-    } else {
-      console.error('Error fetching data');
-    }
-  } catch (error) {
-    console.error('Error:', error);
-  }
-
-  function displayPage(page) {
-    const tableBody = document.getElementById('studentTableBody');
-    tableBody.innerHTML = ''; 
-    const startIndex = (page - 1) * studentsPerPage;
-    const endIndex = Math.min(startIndex + studentsPerPage, students.length);
-
-    for (let i = startIndex; i < endIndex; i++) {
-      const student = students[i];
-      const row = `
-                <tr>
-                    <td>${student.id}</td>
-                    <td>${student.first_name}</td>
-                    <td>${student.last_name}</td>
-                    <td>${student.sex}</td>
-                    <td>${new Date(student.date_of_birth).toLocaleDateString()}</td>
-                    <td>${student.address}</td>
-                    <td>${student.telephone}</td>
-                    <td>${student.email}</td>
-                    <td>${student.status}</td>
-                </tr>
-            `;
-      tableBody.innerHTML += row;
-    }
-  }
-
-  function setupPagination() {
-    const pagination = document.getElementById('pagination');
-    if (!pagination) return; 
-
-    const prevPage = document.getElementById('prev-page');
-    const nextPage = document.getElementById('next-page');
-
-    pagination.querySelectorAll('.page-number').forEach(node => node.remove());
-
-    for (let i = 1; i <= totalPages; i++) {
-      const pageItem = document.createElement('li');
-      pageItem.classList.add('page-item', 'page-number');
-      pageItem.innerHTML = `<a class="page-link" href="#">${i}</a>`;
-      pageItem.addEventListener('click', function (event) {
-        event.preventDefault();
-        currentPage = i;
-        displayPage(currentPage);
-        updatePaginationButtons();
-      });
-      nextPage.parentNode.insertBefore(pageItem, nextPage);
-    }
-
-    prevPage.addEventListener('click', function (event) {
-      event.preventDefault();
-      if (currentPage > 1) {
-        currentPage--;
-        displayPage(currentPage);
-        updatePaginationButtons();
-      }
-    });
-
-    nextPage.addEventListener('click', function (event) {
-      event.preventDefault();
-      if (currentPage < totalPages) {
-        currentPage++;
-        displayPage(currentPage);
-        updatePaginationButtons();
-      }
-    });
-
-    updatePaginationButtons(); 
-  }
-
-  function updatePaginationButtons() {
-    const prevPage = document.getElementById('prev-page');
-    const nextPage = document.getElementById('next-page');
-
-    if (currentPage === 1) {
-      prevPage.classList.add('disabled');
-    } else {
-      prevPage.classList.remove('disabled');
-    }
-
-    if (currentPage === totalPages) {
-      nextPage.classList.add('disabled');
-    } else {
-      nextPage.classList.remove('disabled');
-    }
-
-    document.querySelectorAll('.page-number').forEach((item, index) => {
-      if (index + 1 === currentPage) {
-        item.classList.add('active');
+let res;
+const grid = new gridjs.Grid({
+  columns: ['ID', 'Name', 'Sex', 'Date of Birth','Phone Number', 'Email', 'Status', 'Manage'],
+  search: true,
+  sort: true, 
+  pagination: { 
+    limit: 10
+  },
+  resizable: true,
+  server: {
+    url: 'http://localhost:4200/api/students',
+    then: data => {
+      res = data;
+      if (data.status === '200') {
+        return data.result.map((student, index) => [
+          student.id,
+          `${student.first_name} ${student.last_name}`,
+          student.sex,
+          new Date(student.date_of_birth).toLocaleDateString(),
+          student.telephone,
+          student.email,
+          student.status,
+          gridjs.html(
+            `<!DOCTYPE html>
+            <html lang='en'>
+            <head>
+              <meta charset='UTF-8'/>
+              <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+              <title>Document</title>
+              <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+              <style>
+                .row-button{
+                  padding: 3px 5px;
+                  border: 1px solid #ccc;
+                  border-radius: 4px;
+                  cursor: pointer;
+                }
+              </style>
+            </head>
+            <body>
+              <div class="d-flex flex-row gap-2">
+                <div onclick="" class="row-button">
+                  <center><box-icon name='edit-alt' size="18px" type='solid' color='#797a79'></box-icon></center>
+                </div>
+                <div onclick="deleteStudent(${student.id})" class="row-button">
+                  <center><box-icon name='trash-alt' size="18px" type='solid' color='#797a79'></box-icon></center>
+                </div>
+              </div>
+            </body>
+            </html>
+            `
+          ),
+        ]);
       } else {
-        item.classList.remove('active');
+        console.error('Error fetching data:', data.message);
+        return [];
       }
-    });
+    }
+  },
+  style: {
+    th: {
+      color: '#676a6a',
+    },
+    table: {
+      width: 'fit-content'
+    },
+  },
+  className: {
+    table: 'table-container',
+    tr: 'table-body',
+    pagination: 'table-pagination'
+  },
+  language: {
+    'search': {
+      'placeholder': 'Search name, email...'
+    },
+    'pagination': {
+      'previous': 'Previous',
+      'next': 'Next',
+      'showing': 'Showing',
+      'results': () => 'Records'
+    }
   }
 });
+
+grid.on('rowClick', (event, row) => {
+  const studentId = row.cells[0].data; 
+});
+
+grid.render(document.getElementById("table"));
+
+function deleteStudent(studentId) {
+  if (confirm(`Are you sure you want to delete the student with ID: ${studentId}?`)) {
+    fetch(`http://localhost:4200/api/students/delete/${studentId}`, {
+      method: 'PUT'
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Error deleting student with ID: ${studentId}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data.status === '200') {
+          alert(`Student with ID: ${studentId} deleted successfully.`);
+          
+          location.reload();
+        } else {
+          console.error('Failed to delete the student:', data.message);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+}
+
+function editStudent(studentId) {
+  alert(`Edit student with ID: ${studentId}`);
+}
+
+let resMobile;
+
+const grid2 = new gridjs.Grid({
+  columns: ['ID', 'Name','Status'],
+  search: true,
+  sort: true,
+  pagination: {
+    limit: 10
+  },
+  resizable: true,
+  server: {
+    url: 'http://localhost:4200/api/students',
+    then: data => {
+      resMobile = data;
+      if (data.status === '200') {
+        return data.result.map(student => [
+          student.id,
+          `${student.first_name} ${student.last_name}`,
+          student.status
+        ]);
+      } else {
+        console.error('Error fetching data:', data.message);
+        return [];
+      }
+    }
+  },
+  style: {
+    th: {
+      color: '#676a6a',
+    },
+    table: {
+      width: 'fit-content'
+    },
+  },
+  className: {
+    table: 'table-container',
+    tr: 'table-body',
+    pagination: 'table-pagination'
+  },
+  language: {
+    'search': {
+      'placeholder': 'Search name, email...'
+    },
+    'pagination': {
+      'previous': 'Previous',
+      'next': 'Next',
+      'showing': 'Showing',
+      'results': () => 'Records'
+    }
+  }
+});
+
+grid2.on('rowClick', (event, row) => {
+  const studentId = row.cells[0].data;
+
+  const studentData = resMobile.result.find(student => student.id === studentId);
+
+  if (studentData) {
+    document.getElementById('student-id').textContent = studentData.id;
+    document.getElementById('first-name').textContent = studentData.first_name;
+    document.getElementById('last-name').textContent = studentData.last_name;
+    document.getElementById('telephone').textContent = studentData.telephone;
+    document.getElementById('email').textContent = studentData.email;
+    document.getElementById('dob').textContent = new Date(studentData.date_of_birth).toLocaleDateString();
+    document.getElementById('status').textContent = studentData.status;
+    document.getElementById('sex').textContent = studentData.sex;
+    document.getElementById('previous-school').textContent = studentData.previous_school;
+    document.getElementById('address').textContent = studentData.address;
+
+  } else {
+    console.error('Student data not found for ID:', studentId);
+  }
+});
+
+grid2.render(document.getElementById("table-mobile"));
