@@ -1,22 +1,25 @@
-const xValues = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
-const yValues = [7, 8, 8, 9, 9, 9, 10, 11, 14, 14, 15];
+const xValues = ['Monday', 'Tuesday', 'Wednesday', 'Thurseday', 'Friday'];
+const yValues = [30, 29, 35, 27, 28];
+
+const xValue = ['Jan','Feb','Mar','May','April','June','July','August','September','October','November','December'];
+const yValue = [30, 29, 35, 27, 28, 30, 29, 35, 27, 28, 29, 35];
 
 new Chart("myChart", {
-  type: "line",
+  type: "bar",
   data: {
     labels: xValues,
     datasets: [{
       fill: false,
-      lineTension: 0.5,
-      backgroundColor: "#00e676",
-      borderColor: "#00e67784",
+      lineTension: 0.1,
+      backgroundColor: "#676a6a4f",
+      borderColor: "#676a6a",
       data: yValues
     }]
   },
   options: {
     legend: { display: false },
     scales: {
-      yAxes: [{ ticks: { min: 6, max: 16 } }],
+      yAxes: [{ ticks: { min: 1, max: 40 } }],
     }
   }
 });
@@ -24,19 +27,19 @@ new Chart("myChart", {
 new Chart("myChart2", {
   type: "line",
   data: {
-    labels: xValues,
+    labels: xValue,
     datasets: [{
       fill: false,
-      lineTension: 0.5,
+      lineTension: 0.3,
       backgroundColor: "#00e676",
       borderColor: "#00e67784",
-      data: yValues
+      data: yValue
     }]
   },
   options: {
     legend: { display: false },
     scales: {
-      yAxes: [{ ticks: { min: 6, max: 16 } }],
+      yAxes: [{ ticks: { min: 1, max: 50 } }],
     }
   }
 });
