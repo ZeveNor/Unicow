@@ -1,3 +1,4 @@
+/*  */
 .preview-card{
   background-color: white;
   box-shadow: 3px 1px 10px rgba(198, 200, 198, 0.761);
@@ -20,6 +21,8 @@
   }
 }
 
+
+/*  */
 .table-card {
   background-color: white;
   box-shadow: 3px 1px 10px rgba(198, 200, 198, 0.761);
@@ -60,6 +63,10 @@
   cursor: default;
 }
 
+.table-body:hover {
+  font-weight: 500;
+}
+
 .table-pagination{
   font-size: 12px;
 }
@@ -85,10 +92,6 @@
   .data-table-mobile{
     display: block;
   }
-}
-
-.table-body:hover {
-  font-weight: 500;
 }
 
 .row-button{
