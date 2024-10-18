@@ -42,7 +42,7 @@ const grid = new gridjs.Grid({
                 <div onclick="" class="row-button">
                   <center><box-icon name='edit-alt' size="18px" type='solid' color='#797a79'></box-icon></center>
                 </div>
-                <div onclick="deleteStudent(${student.id})" class="row-button">
+                <div onclick="deleteStudent(${student.id})" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="row-button">
                   <center><box-icon name='trash-alt' size="18px" type='solid' color='#797a79'></box-icon></center>
                 </div>
               </div>
@@ -60,10 +60,7 @@ const grid = new gridjs.Grid({
   style: {
     th: {
       color: '#676a6a',
-    },
-    table: {
-      width: 'fit-content'
-    },
+    }
   },
   className: {
     table: 'table-container',

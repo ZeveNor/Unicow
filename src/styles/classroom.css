@@ -1,0 +1,39 @@
+.class-container{
+  background-color: white !important;
+  box-shadow: 6px 4px 10px rgba(152, 150, 150, 0.406);
+}
+
+.class-box .image{
+  height: 30%;
+}
+
+.class-box .content h6{
+  color: #454646;
+}
+
+.class-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.class-box {
+  width: 23%;
+  min-width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 10px rgba(171, 175, 171, 0.494);
+}
+
+.create-new {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-control{
+  font-size: 12px;
+  margin-top: 6px;
+}
+
