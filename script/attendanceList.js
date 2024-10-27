@@ -70,7 +70,6 @@ async function addNewClassToDB() {
     if (response.ok) {
       // After successfully adding to the database, add the class to the UI
       addNewClassToUI();
-      addSubjectToUI();
     } else {
       console.error('Failed to add the new class');
     }
