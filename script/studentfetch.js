@@ -86,6 +86,7 @@ grid.on('rowClick', (event, row) => {
 
 grid.render(document.getElementById("table"));
 
+
 function deleteStudent(studentId) {
   if (confirm(`Are you sure you want to delete the student with ID: ${studentId}?`)) {
     fetch(`http://localhost:4200/api/students/delete/${studentId}`, {

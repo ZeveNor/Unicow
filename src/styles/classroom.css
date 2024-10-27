@@ -4,11 +4,15 @@
 }
 
 .class-box .image{
-  height: 30%;
+  height: 20%;
 }
 
 .class-box .content h6{
   color: #454646;
+}
+
+.class-content{
+  height: 100%;
 }
 
 .class-list {
@@ -26,6 +30,33 @@
   box-shadow: 0 4px 10px rgba(171, 175, 171, 0.494);
 }
 
+.class-btn{
+  background-color: #ededed;
+  font-size: 13px;
+  flex-grow: 1;
+  border-radius: 0;
+}
+
+.class-del-btn{
+  background-color: rgb(237, 33, 33);
+  color: white;
+  font-size: 13px;
+  flex-grow: 0;
+  border-radius: 0;
+}
+
+.class-del-btn:hover{
+  background-color: rgb(159, 28, 76);
+  color: white;
+  font-weight: 500;
+}
+
+.class-btn:hover{
+  background-color: #6db32c;
+  font-weight: 500;
+  color: #ededed;
+}
+
 .create-new {
   display: flex;
   justify-content: center;
@@ -35,5 +66,6 @@
 .form-control{
   font-size: 12px;
   margin-top: 6px;
+  border: solid 1px rgb(151, 151, 151);
 }
 
